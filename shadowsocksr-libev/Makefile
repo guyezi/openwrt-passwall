@@ -33,7 +33,7 @@ define Package/shadowsocksr-libev/Default
     SUBMENU:=Web Servers/Proxies
     TITLE:=shadowsocksr-libev ssr-$(1)
     URL:=https://github.com/shadowsocksrr/shadowsocksr-libev
-    DEPENDS:=+libev +libsodium +libopenssl +libpthread +libpcre +libudns +zlib
+    DEPENDS:=+libev +libsodium +libmbedtls +libpthread +libpcre +libudns +zlib
   endef
 
   define Package/shadowsocksr-libev-ssr-$(1)/install
@@ -54,6 +54,7 @@ CONFIGURE_ARGS += \
 	--disable-documentation \
 	--disable-ssp \
 	--disable-assert \
+	--with-crypto-library=mbedtls \
 	--enable-system-shared-lib
 
 TARGET_CFLAGS += -flto
